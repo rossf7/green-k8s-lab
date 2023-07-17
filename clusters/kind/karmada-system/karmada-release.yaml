@@ -10,7 +10,7 @@ spec:
       chart: karmada
       version: "1.6.1"
       sourceRef:
-        kind: HelmRepository
+        kind: GitRepository
         name: karmada
         namespace: karmada-system
       interval: 1m
