@@ -1,16 +1,16 @@
-apiVersion: source.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: karmada
-  namespace: default
+  namespace: karmada-system
 spec:
   interval: 5m
   chart:
     spec:
-      chart: podinfo
+      chart: karmada
       version: "1.6.1"
       sourceRef:
         kind: HelmRepository
         name: karmada
-        namespace: default
+        namespace: karmada-system
       interval: 1m
