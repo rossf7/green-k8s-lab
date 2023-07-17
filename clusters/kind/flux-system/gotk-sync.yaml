@@ -20,7 +20,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./clusters/green-k8s-mgmt-01
+  path: ./clusters/kind
   prune: true
   sourceRef:
     kind: GitRepository
