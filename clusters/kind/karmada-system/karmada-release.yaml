@@ -8,9 +8,9 @@ spec:
   chart:
     spec:
       chart: karmada
-      version: "1.6.1"
+      version: "1.6.0"
       sourceRef:
-        kind: GitRepository
+        kind: HelmRepository
         name: karmada
         namespace: karmada-system
       interval: 1m
