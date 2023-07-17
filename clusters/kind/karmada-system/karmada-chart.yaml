@@ -1,0 +1,13 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmChart
+metadata:
+  name: karmada
+  namespace: karmada-system
+spec:
+  interval: 5m0s
+  chart: karmada
+  reconcileStrategy: ChartVersion
+  sourceRef:
+    kind: HelmRepository
+    name: karmada
+  version: '1.*'
