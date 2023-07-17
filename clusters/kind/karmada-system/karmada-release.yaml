@@ -14,4 +14,4 @@ spec:
         name: karmada
         namespace: karmada-system
       interval: 1m
-      timeout: 10m
+  timeout: 10m
