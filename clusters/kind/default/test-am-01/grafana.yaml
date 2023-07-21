@@ -4,7 +4,6 @@ metadata:
   name: grafana
   namespace: monitoring
 spec:
-  interval: 5m
   chart:
     spec:
       chart: grafana
@@ -12,5 +11,12 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: grafana
-        namespace: monitoring
+        namespace: default
       interval: 1m
+  install:
+    createNamespace: true
+  interval: 5m
+  kubeConfig:
+    secretRef:
+      name: test-am-01-kubeconfig
+  targetNamespace: monitoring
