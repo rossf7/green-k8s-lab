@@ -12,6 +12,6 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: karmada
-        namespace: karmada-system
+        namespace: default
       interval: 1m
   timeout: 5m

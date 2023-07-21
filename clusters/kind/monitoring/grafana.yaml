@@ -12,5 +12,5 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: grafana
-        namespace: monitoring
+        namespace: default
       interval: 1m
