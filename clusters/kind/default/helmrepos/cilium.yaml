@@ -1,8 +1,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: calico
+  name: cilium
   namespace: default
 spec:
   interval: 5m0s
-  url: https://docs.tigera.io/calico/charts
+  url: https://helm.cilium.io/
