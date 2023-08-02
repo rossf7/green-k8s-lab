@@ -21,3 +21,10 @@ spec:
       name: test-am-01-kubeconfig
   targetNamespace: monitoring
   timeout: 5m
+  values:
+    alertmanager:
+      persistentVolume:
+        enabled: "false"
+    server:
+      persistentVolume:
+        enabled: "false"
