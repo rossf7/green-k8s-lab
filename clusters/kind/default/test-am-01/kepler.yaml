@@ -19,4 +19,4 @@ spec:
   kubeConfig:
     secretRef:
       name: test-am-01-kubeconfig
-  targetNamespace: monitoring
+  targetNamespace: kepler
