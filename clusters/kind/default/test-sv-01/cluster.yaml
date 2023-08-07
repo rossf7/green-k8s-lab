@@ -1,7 +1,7 @@
 apiVersion: controlplane.cluster.x-k8s.io/v1beta1
 kind: KubeadmControlPlane
 metadata:
-  name: test-am-01-control-plane
+  name: test-sv-01-control-plane
   namespace: default
 spec:
   kubeadmConfigSpec:
@@ -41,7 +41,7 @@ spec:
       if [ -f "/run/kubeadm/kubeadm.yaml" ]; then
         export KUBECONFIG=/etc/kubernetes/admin.conf
         export CPEM_YAML=https://github.com/equinix/cloud-provider-equinix-metal/releases/download/v3.6.1/deployment.yaml
-        export SECRET_DATA='cloud-sa.json=''{"apiKey": "{{ .apiKey }}","projectID": "152df583-819a-4938-8445-9eb4e0dfa2c8", "eipTag": "cluster-api-provider-packet:cluster-id:test-am-01", "eipHealthCheckUseHostIP": true}'''
+        export SECRET_DATA='cloud-sa.json=''{"apiKey": "{{ .apiKey }}","projectID": "152df583-819a-4938-8445-9eb4e0dfa2c8", "eipTag": "cluster-api-provider-packet:cluster-id:test-sv-01", "eipHealthCheckUseHostIP": true}'''
         kubectl create secret generic -n kube-system metal-cloud-config --from-literal="${SECRET_DATA}" || (sleep 1 && kubectl create secret generic -n kube-system metal-cloud-config --from-literal="${SECRET_DATA}") || (sleep 1 && kubectl create secret generic -n kube-system metal-cloud-config --from-literal="${SECRET_DATA}")
         kubectl apply -f ${CPEM_YAML} || (sleep 1 && kubectl apply -f ${CPEM_YAML}) || (sleep 1 && kubectl apply -f ${CPEM_YAML})
       fi
@@ -94,14 +94,14 @@ spec:
     infrastructureRef:
       apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
       kind: PacketMachineTemplate
-      name: test-am-01-control-plane
+      name: test-sv-01-control-plane
   replicas: 1
   version: v1.26.7
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: PacketMachineTemplate
 metadata:
-  name: test-am-01-control-plane
+  name: test-sv-01-control-plane
   namespace: default
 spec:
   template:
@@ -117,7 +117,7 @@ spec:
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
-  name: test-am-01
+  name: test-sv-01
   namespace: default
 spec:
   clusterNetwork:
@@ -130,19 +130,19 @@ spec:
   controlPlaneRef:
     apiVersion: controlplane.cluster.x-k8s.io/v1beta1
     kind: KubeadmControlPlane
-    name: test-am-01-control-plane
+    name: test-sv-01-control-plane
   infrastructureRef:
     apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
     kind: PacketCluster
-    name: test-am-01
+    name: test-sv-01
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: PacketCluster
 metadata:
-  name: test-am-01
+  name: test-sv-01
   namespace: default
 spec:
-  metro: am
+  metro: sv
   projectID: 152df583-819a-4938-8445-9eb4e0dfa2c8
   vipManager: CPEM
 ---
@@ -150,39 +150,39 @@ apiVersion: cluster.x-k8s.io/v1beta1
 kind: MachineDeployment
 metadata:
   labels:
-    cluster.x-k8s.io/cluster-name: test-am-01
+    cluster.x-k8s.io/cluster-name: test-sv-01
     pool: worker-a
-  name: test-am-01-worker-a
+  name: test-sv-01-worker-a
   namespace: default
 spec:
-  clusterName: test-am-01
+  clusterName: test-sv-01
   replicas: 0
   selector:
     matchLabels:
-      cluster.x-k8s.io/cluster-name: test-am-01
+      cluster.x-k8s.io/cluster-name: test-sv-01
       pool: worker-a
   template:
     metadata:
       labels:
-        cluster.x-k8s.io/cluster-name: test-am-01
+        cluster.x-k8s.io/cluster-name: test-sv-01
         pool: worker-a
     spec:
       bootstrap:
         configRef:
           apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
           kind: KubeadmConfigTemplate
-          name: test-am-01-worker-a
-      clusterName: test-am-01
+          name: test-sv-01-worker-a
+      clusterName: test-sv-01
       infrastructureRef:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: PacketMachineTemplate
-        name: test-am-01-worker-a
+        name: test-sv-01-worker-a
       version: v1.26.7
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: PacketMachineTemplate
 metadata:
-  name: test-am-01-worker-a
+  name: test-sv-01-worker-a
   namespace: default
 spec:
   template:
@@ -198,7 +198,7 @@ spec:
 apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
 kind: KubeadmConfigTemplate
 metadata:
-  name: test-am-01-worker-a
+  name: test-sv-01-worker-a
   namespace: default
 spec:
   template:
