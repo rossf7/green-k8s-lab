@@ -1,46 +1,22 @@
-# green-k8s-lab WIP
+# green-k8s-lab
 
-Provision bare metal k8s clusters with Equinix Metal for testing green
-software tools.
+My home lab a bare metal Kubernetes cluster running [K3s](https://k3s.io/)
+for experimenting with green software tools. Especially for measuring energy
+consumption using [RAPL](https://web.eece.maine.edu/~vweaver/projects/rapl/).
 
-## Bootstrap
+## Bootstrap Flux
 
 Set env vars
 
 - GITHUB_TOKEN
 - GITHUB_USER
-- PACKET_API_KEY
 
 ```sh
-kind delete cluster && kind create cluster
 clusterctl init --infrastructure packet
 flux bootstrap github \
   --owner=$GITHUB_USER \
   --repository=green-k8s-lab \
   --branch=main \
-  --path=./clusters/kind \
+  --path=./clusters \
   --personal
 ```
-
-## management cluster (kind)
-
-- flux
-- carbon-aware-karmada-operator
-- karmada
-- grafana
-- prometheus
-
-## workload clusters (Equinix Metal)
-
-- grid-intensity-exporter
-- kepler
-- scaphandre
-- flux
-- grafana
-- prometheus
-
-## Silicon Valley cluster
-
-- carbon-aware-keda-operator
-- kubernetes-carbon-intensity-exporter
-- keda

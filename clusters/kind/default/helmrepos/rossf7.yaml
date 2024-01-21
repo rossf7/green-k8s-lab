@@ -1,8 +1,0 @@
-apiVersion: source.toolkit.fluxcd.io/v1beta2
-kind: HelmRepository
-metadata:
-  name: rossf7
-  namespace: default
-spec:
-  interval: 5m0s
-  url: https://rossf7.github.io/charts
