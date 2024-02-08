@@ -1,13 +1,15 @@
 # green-k8s-lab
 
-My home lab a bare metal Kubernetes cluster running [K3s](https://k3s.io/)
+My home lab.  A bare metal Kubernetes cluster running [K3s](https://k3s.io/)
 for experimenting with green software tools. Especially for measuring energy
 consumption using [RAPL](https://web.eece.maine.edu/~vweaver/projects/rapl/).
 
 ## Install K3s
 
 ```sh
-curl -sfL https://get.k3s.io | sh -s -- --flannel-backend none --disable traefik --disable-network-policy
+curl -sfL https://get.k3s.io | sh -s -- --flannel-backend none \
+  --disable traefik \
+  --disable-network-policy
 ```
 
 ## Copy kubeconfig
