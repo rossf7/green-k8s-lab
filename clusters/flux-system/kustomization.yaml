@@ -4,3 +4,7 @@ resources:
 - gotk-components.yaml
 - gotk-sync.yaml
 - overlays/node-selector-patch.yaml
+patches:
+- path: node-selector-patch.yaml
+  target:
+    kind: Deployment

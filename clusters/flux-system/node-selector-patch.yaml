@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: helm-controller
+  name: flux
   namespace: flux-system
 spec:
   template:
