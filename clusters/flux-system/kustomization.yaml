@@ -7,3 +7,6 @@ patches:
 - path: node-selector-patch.yaml
   target:
     kind: Deployment
+- path: sops-patch.yaml
+  target:
+    kind: Kustomization
