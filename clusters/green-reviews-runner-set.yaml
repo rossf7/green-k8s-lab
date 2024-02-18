@@ -17,10 +17,6 @@ spec:
   values:
     githubConfigUrl: https://github.com/rossf7/green-k8s-lab
     githubConfigSecret: green-reviews-runners-pat
-    listenerTemplate:
-      nodeSelector:
-        cncf-project: wg-green-reviews
-        cncf-project-sub: internal
     template:
       nodeSelector:
         cncf-project: wg-green-reviews
